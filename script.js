@@ -1,63 +1,59 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
-const up = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const low = "abcdefghijklmnopqrstuvwxyz";
-const num = "0123456789";
-const sym = "!@#$%^&*()_+=-][";
-up.split;
-low.split;
-num.split;
-sym.split;
+const upChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowChar = "abcdefghijklmnopqrstuvwxyz";
+const numChar = "0123456789";
+const symChar = "!@#$%^&*()_+=-][";
+upChar.split;
+lowChar.split;
+numChar.split;
+symChar.split;
 function generatePassword() {
   length = prompt("You may choose a length between 8-128 characters");
   if (length<8 || length>128) {
     alert("Passowrd can only be 8-128 characters");
     return;
   }
-  up = confrim("Would you like to use uppercase letters?");
-  low = confrim("Would you like to use lowercase letters?");
+  up = confirm("Would you like to use uppercase letters?");
+  low = confirm("Would you like to use lowercase letters?");
   num = confirm("Would you like to use numbers?");
-  sym = confrim("Would you like to use special characters?");
+  sym = confirm("Would you like to use special characters?");
   if (up && low && num && sym) {
-    selection = up.concat(low, num, sym);
+    selection = upChar.concat(lowChar, numChar, symChar);
   } else if (!up && low && num && sym) {
-    selection = low.concat(num, sym);
+    selection = lowChar.concat(numChar, symChar);
   } else if (up && !low && num && sym) {
-    selection = up.concat(num, sym);
+    selection = upChar.concat(numChar, symChar);
   } else if (up && low && !num && sym) {
-    selection = up.concat(low, sym);
+    selection = upChar.concat(lowChar, symChar);
   } else if (up && low && num && !sym) {
-    selection = up.concat(low, num);
+    selection = upChar.concat(lowChar, numChar);
   } else if (up && low) {
-    selection = up.concat(low);
+    selection = upChar.concat(lowChar);
   } else if (up && num) {
-    selection = up.concat(num);
+    selection = upChar.concat(numChar);
   } else if (up && sym) {
-    selection = up.concat(sym);
+    selection = upChar.concat(symChar);
   } else if (low && num) {
-    selection = low.concat(num);
+    selection = lowChar.concat(numChar);
   } else if (low && sym) {
-    selection = low.concat(sym);
+    selection = lowChar.concat(symChar);
   } else if (num && sym) {
-    selection = num.concat(sym);
+    selection = numChar.concat(symChar);
   } else if (up) {
-    selection = up;
+    selection = upChar;
   } else if (low) {
-    selection = low;
+    selection = lowChar;
   } else if (num) {
-    selection = num;
+    selection = numChar;
   } else if (sym) {
-    selection = sym;
+    selection = symChar;
   }
   let choices = ""; 
   for (var i=0; i<length; i++) {
     choices = choices + selection[Math.floor(Math.random() * selection.length)];
     console.log(); 
-  }
-  return choices; 
+  } return choices; 
 }
- 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -65,6 +61,4 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
